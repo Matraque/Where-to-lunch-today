@@ -94,7 +94,7 @@ def main():
 
     # Main area
     # Get Random Restaurant button
-    if st.button("Choisir un Restaurant"):
+    if st.button("Choose a Restaurant"):
         if restaurants:
             selected = random.choice(restaurants)
             add_event("selection", selected)
@@ -105,7 +105,7 @@ def main():
 
     # Display the last selected restaurant
     if 'last_selected' in st.session_state:
-        st.success(f"🎉 Restaurant du jour : **{st.session_state.last_selected}**")
+        st.success(f"🎉 Today's Restaurant : **{st.session_state.last_selected}**, Bon appetit !")
 
     # View Events
     st.subheader("Events")
@@ -113,13 +113,13 @@ def main():
     if events:
         for event in sorted(events, key=lambda x: datetime.strptime(x['date'], "%d/%m/%Y %H:%M:%S"), reverse=True):
             if event['type'] == 'selection':
-                st.write(f"🍕 {event['date']}: The restaurant **{event['restaurant']}** has been picked")
+                st.write(f"🍕 {event['date']}: The restaurant **{event['restaurant']}** has been picked.")
             elif event['type'] == 'addition':
-                st.write(f"🍔 {event['date']}: Nouveau restaurant ajouté à la liste : **{event['restaurant']}**")
+                st.write(f"🍔 {event['date']}: New restaurant added to the pool : **{event['restaurant']}**")
             elif event['type'] == 'deletion':
-                st.write(f"🗑️ {event['date']}: Restaurant supprimé de la liste : **{event['restaurant']}**")
+                st.write(f"🗑️ {event['date']}: Restaurant deleted from the pool : **{event['restaurant']}**")
     else:
-        st.write("Pas encore d'évènements")
+        st.write("No events yet")
 
 if __name__ == "__main__":
     main()
