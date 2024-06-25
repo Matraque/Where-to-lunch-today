@@ -57,7 +57,7 @@ def main():
 
     # Sidebar for restaurant list and adding new restaurants
     with st.sidebar:
-        st.header("Restaurants disponibles")
+        st.header("Available Restaurants")
         
         # Display the list of restaurants
         if restaurants:
@@ -73,7 +73,7 @@ def main():
             st.write("No restaurants in the database.")
         
         # Add Restaurant button
-        if st.button("Propose un nouveau restaurant !"):
+        if st.button("Propose a new restaurant !"):
             st.session_state.show_input = True
         
         # Show input box when Add Restaurant is clicked
@@ -94,7 +94,7 @@ def main():
 
     # Main area
     # Get Random Restaurant button
-    if st.button("Choose a Restaurant"):
+    if st.button("Choose a random Restaurant"):
         if restaurants:
             selected = random.choice(restaurants)
             add_event("selection", selected)
